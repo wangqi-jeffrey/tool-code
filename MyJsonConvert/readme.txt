@@ -1,0 +1,4 @@
+该项目是将实体类class转换为json的工具，支持的数据类型有：
+八种基本数据类型及其包装类
+BigDecimal Date String
+其他类型请自行封装

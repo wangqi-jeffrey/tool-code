@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yihaomen.mybatis.model.RegionMapper" >
+  <resultMap id="BaseResultMap" type="region" >
+    <result column="id" property="id" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+    <result column="grade" property="grade" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="alias" property="alias" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.yihaomen.mybatis.model.Region" >
+    insert into region (id, parent_id, grade, 
+      code, name)
+    values (#{id,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, #{grade,jdbcType=INTEGER}, 
+      #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR})
+  </insert>
+  
+  <select id="selectForKey" resultMap="BaseResultMap">
+	    select * from region where name = #{string}
+  </select>
+  
+  <select id="selectList" resultMap="BaseResultMap">
+	    select * from region
+  </select>
+  
+  <update id="update">
+		update region set name = #{linkTextd} where code = #{code}
+	</update>
+	
+  <insert id="insertSelective" parameterType="com.yihaomen.mybatis.model.Region" >
+    insert into region
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="grade != null" >
+        grade,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="alias != null" >
+        alias,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null" >
+        #{alias,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
