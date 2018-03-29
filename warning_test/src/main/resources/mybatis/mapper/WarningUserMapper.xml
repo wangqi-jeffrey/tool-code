@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neo.dao.WarningUserDao">
+	<resultMap id="BaseResultMap" type="com.neo.entity.WarningUser">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="mobile" property="mobile" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="invalid" property="invalid" jdbcType="BIT" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">id,name,mobile,email,invalid,create_time,update_time</sql>
+
+	<!-- 根据报警组名称 和 报警项id 获取报警用户 -->
+	<select id="getWarningUserByName" resultMap="BaseResultMap">
+		SELECT 
+		wu.id as id,
+		wu.name as name,
+		wu.mobile as mobile,
+		wu.email as email,
+		wu.invalid as invalid,
+		wu.create_time as create_time,
+		wu.update_time as update_time
+	  	FROM t_warning_user wu
+		INNER JOIN t_warning_user_group wug ON wu.id=wug.warning_user_id AND wug.invalid=0
+		INNER JOIN t_warning_group wg ON wg.id=wug.warning_group_id AND wg.invalid=0
+		INNER JOIN t_warning_item_group wig ON wig.warning_group_id=wg.id AND wig.invalid=0
+		AND wig.warning_item_id = #{itemId,jdbcType=INTEGER}
+		WHERE wu.invalid=0 
+		<if test="groupNames != null and groupNames.size != 0">
+			and wg.name in
+			<foreach item="name" collection="groupNames" open="(" close=")" separator=",">
+				#{name,jdbcType=VARCHAR}
+			</foreach>
+		</if>
+	</select>
+
+</mapper>
