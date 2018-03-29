@@ -1,6 +1,4 @@
-package com.jiufu.aesrsa.network;
-
-import android.util.Log;
+package com.wq.util.random;
 
 import java.security.SecureRandom;
 
@@ -217,7 +215,7 @@ public class RandomUtil {
 
         if (totleLimit < charLimit)
         {
-            Log.e("ERROR","Error::要包含数字位数大于整个随机字符串长度");
+//            Log.e("ERROR","Error::要包含数字位数大于整个随机字符串长度");
             // TODO 是否在外部处理
         }
         int[] scope = getScopeOfInt(totleLimit);
