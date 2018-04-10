@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<classPathEntry location="E:\git_repo\gitHub\tool-code\mybatis_generate_xml\lib\mysql-connector-java-5.1.35.jar" />
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<property name="suppressDate" value="false"/>
+            <property name="suppressAllComments" value="true"/>
+		</commentGenerator>
+		
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" 
+				connectionURL="jdbc:mysql://wmsdevdb:3306/d01" 
+				userId="hmwms_write" 
+				password="huimin@2016_wms"> 
+		</jdbcConnection>
+		
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		
+		 <!-- 生成模型的包名和位置-->  
+        <javaModelGenerator targetPackage="com.jeffrey.entity" targetProject="mybatis_generate_xml">  
+            <property name="enableSubPackages" value="true"/>  
+            <property name="trimStrings" value="true"/>  
+        </javaModelGenerator>  
+        <!-- 生成映射文件的包名和位置-->
+        <sqlMapGenerator targetPackage="com.jeffrey.mapperxml" targetProject="mybatis_generate_xml">  
+            <property name="enableSubPackages" value="true"/>  
+        </sqlMapGenerator>
+        <!-- 生成DAO的包名和位置-->  
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.jeffrey.mapper" targetProject="mybatis_generate_xml">  
+            <property name="enableSubPackages" value="true"/>  
+        </javaClientGenerator>
+        
+        <!-- 
+        <table tableName="MYTABLE" schema="MYSCHEMA">
+		  <ignoreColumn column="fred"/>
+		  <columnOverride column="BEG_DATE" property="startDate"/>
+		</table> 
+
+		<table tableName="user" domainObjectName="Tasks"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false" />
+		-->
+		<!-- <table tableName="tasks" domainObjectName="Tasks"/> -->
+		<table tableName="tasks" domainObjectName="Tasks"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
+	</context>
+</generatorConfiguration>
