@@ -1,17 +1,26 @@
 package com.jeffrey.mapper;
 
 import com.jeffrey.entity.User;
+import com.jeffrey.entity.UserExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
-    int deleteByPrimaryKey(Integer id);
+    int countByExample(UserExample example);
 
-    int insert(User record);
+	int deleteByExample(UserExample example);
+
+	int insert(User record);
+
+	int insertSelective(User record);
+
+	List<User> selectByExample(UserExample example);
+
+	int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
+
+	int updateByExample(@Param("record") User record, @Param("example") UserExample example);
+
+	int insert(User record);
 
     int insertSelective(User record);
-
-    User selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(User record);
-
-    int updateByPrimaryKey(User record);
 }

@@ -9,9 +9,9 @@
 		</commentGenerator>
 		
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver" 
-				connectionURL="jdbc:mysql://wmsdevdb:3306/d01" 
-				userId="hmwms_write" 
-				password="huimin@2016_wms"> 
+				connectionURL="jdbc:mysql://wmsdevdb:3306/wms" 
+				userId="root" 
+				password="root"> 
 		</jdbcConnection>
 		
 		<javaTypeResolver>
