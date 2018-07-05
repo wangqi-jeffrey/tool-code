@@ -9,7 +9,7 @@
 		</commentGenerator>
 		
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver" 
-				connectionURL="jdbc:mysql://wmsdevdb:3306/wms" 
+				connectionURL="jdbc:mysql://localhost:3306/artist" 
 				userId="root" 
 				password="root"> 
 		</jdbcConnection>
@@ -44,7 +44,7 @@
 			selectByExampleQueryId="false" />
 		-->
 		<!-- <table tableName="tasks" domainObjectName="Tasks"/> -->
-		<table tableName="tasks" domainObjectName="Tasks"
+		<table tableName="designer" domainObjectName="Designer"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>
